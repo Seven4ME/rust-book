@@ -1,0 +1,3 @@
+[workspace]
+respolver = "3"
+members = ["guess-game","hello-wrld"]
