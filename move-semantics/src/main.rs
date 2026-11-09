@@ -1,0 +1,88 @@
+#![allow(clippy::ptr_arg)]
+
+// TODO: Fix the compiler error in this function.
+fn fill_vec(vec: Vec<i32>) -> Vec<i32> {
+    let mut vec = vec;
+
+    vec.push(88);
+
+    vec
+}
+
+fn fill_vec2(vec: &[i32]) -> Vec<i32> {
+    let mut vec2: Vec<i32> = vec.to_vec();
+
+    vec2.push(88);
+
+    vec2
+}
+// TODO: Fix the compiler error in the function without adding any new line.
+fn fill_vec3(mut vec: Vec<i32>) -> Vec<i32> {
+    vec.push(88);
+
+    vec
+}
+
+// TODO: Fix the compiler errors without changing anything except adding or
+// removing references (the character `&`).
+
+// Shouldn't take ownership
+fn get_char(data: &String) -> char {
+    data.chars().last().unwrap()
+}
+
+// Should take ownership
+fn string_uppercase(mut data: String) {
+    data = data.to_uppercase();
+
+    println!("{data}");
+}
+
+fn main() {
+    let data = "Rust is great!".to_string();
+
+    get_char(&data);
+
+    string_uppercase(data);
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn move_semantics1() {
+        let vec0 = vec![22, 44, 66];
+        let vec1 = fill_vec(vec0);
+        assert_eq!(vec1, vec![22, 44, 66, 88]);
+    }
+    // TODO: Make both vectors `vec0` and `vec1` accessible at the same time to
+    // fix the compiler error in the test.
+    #[test]
+    fn move_semantics2() {
+        let vec0 = vec![22, 44, 66];
+
+        let vec1 = fill_vec2(&vec0);
+
+        assert_eq!(vec0, [22, 44, 66]);
+        assert_eq!(vec1, [22, 44, 66, 88]);
+    }
+    #[test]
+    fn move_semantics3() {
+        let vec0 = vec![22, 44, 66];
+        let vec1 = fill_vec3(vec0);
+        assert_eq!(vec1, [22, 44, 66, 88]);
+    }
+    // TODO: Fix the compiler errors only by reordering the lines in the test.
+    // Don't add, change or remove any line.
+    #[test]
+    fn move_semantics4() {
+        let mut x = Vec::new();
+        let y = &mut x;
+        y.push(42);
+
+        let z = &mut x;
+        z.push(13);
+        assert_eq!(x, [42, 13]);
+    }
+}

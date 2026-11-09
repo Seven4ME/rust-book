@@ -66,6 +66,10 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "65cd87c9a6d60536580b316ad985726104730a5151c99845f2490428ef91240a"
 
 [[package]]
+name = "move-semantics"
+version = "0.1.0"
+
+[[package]]
 name = "primitive-types"
 version = "0.1.0"
 
@@ -94,4 +98,8 @@ checksum = "63b8176103e19a2643978565ca18b50549f6101881c443590420e4dc998a3c69"
 
 [[package]]
 name = "variables-and-mutability"
+version = "0.1.0"
+
+[[package]]
+name = "vecs"
 version = "0.1.0"

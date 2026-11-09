@@ -1,3 +1,3 @@
 [workspace]
 respolver = "3"
-members = ["control-flow","functions","guess-game","hello-wrld", "primitive-types", "variables-and-mutability"]
+members = ["control-flow","functions","guess-game","hello-wrld", "move-semantics", "primitive-types", "variables-and-mutability", "vecs"]
